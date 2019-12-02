@@ -3,3 +3,7 @@ Comandos
 1) Adicionar Express = yarn add express
 2) Adicionar Nodemon = yarn add nodemon -D
 3) Adicionar Sucrase = yarn add sucrase -D
+4) yarn add eslint -D
+5) yarn eslint --init
+6) yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
+7) yarn eslint --fix src --ext .js
