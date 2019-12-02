@@ -1,3 +1,4 @@
 Comandos
 
 1) Adicionar Express = yarn add express
+2) Adicionar Nodemon = yarn add nodemon -D
