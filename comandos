@@ -7,3 +7,11 @@ Comandos
 5) yarn eslint --init
 6) yarn add prettier eslint-config-prettier eslint-plugin-prettier -D
 7) yarn eslint --fix src --ext .js
+8) yarn add sequelize
+9) yarn add sequelize-cli -D
+10) yarn add pg pg-hstore
+11) Criar migration: yarn sequelize migration:create --name=[nome_migration]
+12) Rodar migrations: yarn sequelize db:migrate
+13) Desfaz o ultimo migration executado: yarn sequelize db:migrate:undo
+14) Desfaz todas migration: yarn sequelize db:migrate:undo:all
+
