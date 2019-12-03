@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="Gympoint" title="Gympoint" src=".github/logo.png" width="200px" />
+  Gympoint
 </h1>
 
 <h3 align="center">
@@ -23,8 +23,30 @@
 </p>
 
 <p align="center">
-  <a href="#rocket-sobre-o-desafio">Sobre o desafio</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-    <a href="#memo-lista-de-tarefas">Tarefas</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-como-executar">Executar</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+    <a href="#rocket-api">API</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
 </p>
+
+## :rocket: Como Executar
+
+- Para executar 
+
+## :rocket: API
+
+#### 1. User
+
+- POST http://[base_url]/users
+
+Body:
+
+```json
+{
+	"name":"name_user",
+	"email":"user@email.com",
+	"password":"123456"
+}
+```
+
+
