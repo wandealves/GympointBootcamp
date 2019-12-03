@@ -14,4 +14,6 @@ Comandos
 12) Rodar migrations: yarn sequelize db:migrate
 13) Desfaz o ultimo migration executado: yarn sequelize db:migrate:undo
 14) Desfaz todas migration: yarn sequelize db:migrate:undo:all
+15) Criar seed: yarn sequelize seed:generate --name [name_seed]
+16) Rodar seed: yarn sequelize db:seed:all
 
