@@ -49,4 +49,59 @@ Body:
 }
 ```
 
+- PUT http://[base_url]/users
+
+Body:
+
+```json
+{
+	"name":"user_name",
+	"email":"user@email.com",
+	"oldPassword":"123456",
+	"password":"222222",
+	"confirmPassword":"222222"
+}
+```
+
+#### 2. Token
+
+- POST http://[base_url]/sessions
+
+Body:
+
+```json
+{
+	"email":"admin@gympoint.com",
+	"password":"123456"
+}
+```
+
+#### 3. Students
+
+- POST http://[base_url]/students
+
+```json
+{
+	"name":"user_name",
+	"email":"user@email.com",
+	"age":36,
+	"weight":80.20,
+	"height": 1.80
+}
+```
+
+- PUT http://[base_url]/students/{id}
+
+```json
+{
+	"name":"user_name",
+	"email":"user@email.com",
+	"age":36,
+	"weight":80.20,
+	"height": 1.80
+}
+```
+
+
+
 
