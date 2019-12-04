@@ -19,7 +19,7 @@ class Registration extends Model {
       const { plan_id, start_date } = registration;
       const plan = await Plan.findByPk(plan_id);
 
-      registration.price = plan.price;
+      registration.price = plan.price * plan.duration;
       registration.end_date = addMonths(start_date, plan.duration);
     });
 

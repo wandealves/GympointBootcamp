@@ -127,3 +127,28 @@ Body:
 ```
 
 - DELETE http://[base_url]/plans/{id}
+
+#### 4. Registrations
+
+- GET http://[base_url]/registrations?page=1
+
+- POST http://[base_url]/registrations
+
+```json
+{
+  "student_id": 1,
+  "plan_id": 1,
+  "start_date": "2019-01-06T11:00:00-03:00"
+}
+```
+
+- PUT http://[base_url]/registrations/{id}
+
+```json
+{
+  "start_date": "2019-10-06T11:00:00-03:00",
+  "plan_id": 1
+}
+```
+
+- DELETE http://[base_url]/registrations/{id}

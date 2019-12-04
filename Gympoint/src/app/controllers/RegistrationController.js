@@ -9,16 +9,20 @@ class RegistrationController {
     const { page = 1 } = req.query;
     const registrations = await Registration.findAll({
       order: ['start_date'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
     });
     return res.json(registrations);
   }
 
   async store(req, res) {
     const schema = Yup.object().shape({
-      student_id: Yup.number().required(),
-      plan_id: Yup.number().required(),
+      student_id: Yup.number()
+        .required()
+        .moreThan(0),
+      plan_id: Yup.number()
+        .required()
+        .moreThan(0),
       start_date: Yup.date().required(),
     });
 
@@ -35,7 +39,7 @@ class RegistrationController {
         {
           model: Student,
           as: 'student',
-          attributes: ['nome', 'email'],
+          attributes: ['name', 'email'],
         },
         {
           model: Plan,
