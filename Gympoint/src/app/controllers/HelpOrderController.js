@@ -7,8 +7,8 @@ class HelpOrderController {
     const { page = 1 } = req.query;
     const registrations = await HelpOrder.findAll({
       order: ['question'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       where: {
         student_id: req.params.id,
       },
@@ -16,7 +16,7 @@ class HelpOrderController {
         {
           model: Student,
           as: 'student',
-          attributes: ['nome', 'email'],
+          attributes: ['name', 'email'],
         },
       ],
     });

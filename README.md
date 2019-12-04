@@ -158,3 +158,32 @@ Body:
 - POST http://[base_url]/students/{id}/checkins
 
 - GET http://[base_url]/students/{id}/checkins?page=1
+
+#### 7. Help Orders
+
+- Lista de pedidos sem respostas
+
+- GET http://[base_url]/help-orders/no-reply?page=1
+
+- Cadastrar e listar pedidos
+
+- POST http://[base_url]/students/{id}/help-orders
+
+```json
+{
+  "question": "question"
+}
+```
+
+- GET http://[base_url]/students/{id}/help-orders?page=1
+
+- Responder pedido
+
+- POST http://[base_url]/help-orders/{id}/answer
+
+```json
+{
+  "answer": "answer",
+  "answer_at": "2019-12-04T11:00:00-03:00"
+}
+```

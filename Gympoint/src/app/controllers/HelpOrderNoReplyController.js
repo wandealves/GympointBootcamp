@@ -6,8 +6,8 @@ class HelpOrderNoReplyController {
     const { page = 1 } = req.query;
     const registrations = await HelpOrder.findAll({
       order: ['question'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       where: {
         answer_at: null,
       },
@@ -15,7 +15,7 @@ class HelpOrderNoReplyController {
         {
           model: Student,
           as: 'student',
-          attributes: ['nome', 'email'],
+          attributes: ['name', 'email'],
         },
       ],
     });
