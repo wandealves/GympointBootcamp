@@ -1,5 +1,6 @@
 import { startOfDay, endOfDay } from 'date-fns';
 import { Op } from 'sequelize';
+
 import Checkin from '../models/Checkin';
 import Student from '../models/Student';
 
@@ -8,8 +9,8 @@ class CheckinController {
     const { page = 1 } = req.query;
     const checkins = await Checkin.findAll({
       order: ['created_at'],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       where: {
         student_id: req.params.id,
       },
@@ -18,7 +19,7 @@ class CheckinController {
         {
           model: Student,
           as: 'student',
-          attributes: ['nome', 'email'],
+          attributes: ['name', 'email'],
         },
       ],
     });

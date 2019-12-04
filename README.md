@@ -128,7 +128,7 @@ Body:
 
 - DELETE http://[base_url]/plans/{id}
 
-#### 4. Registrations
+#### 5. Registrations
 
 - GET http://[base_url]/registrations?page=1
 
@@ -152,3 +152,9 @@ Body:
 ```
 
 - DELETE http://[base_url]/registrations/{id}
+
+#### 6. Checkins
+
+- POST http://[base_url]/students/{id}/checkins
+
+- GET http://[base_url]/students/{id}/checkins?page=1
