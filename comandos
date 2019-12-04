@@ -18,4 +18,7 @@ Comandos
 16) Rodar seed: yarn sequelize db:seed:all
 17) Redis Docker: docker run --name [name] -p 6379:6379 -d -t redis:alpine 
 18) yarn add bee-queue
+19) Sentry: yarn add @sentry/node@5.4.3
+20) yarn add express-async-errors
+21) yarn add youch
 
