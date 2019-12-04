@@ -2,7 +2,8 @@ import * as Yup from 'yup';
 
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
-import Mail from '../../lib/Mail';
+import Queue from '../../lib/Queue';
+import HelpOrderAnswerMail from '../jobs/HelpOrderAnswerMail';
 
 class HelpOrderAnswerController {
   async store(req, res) {
@@ -31,10 +32,10 @@ class HelpOrderAnswerController {
 
     const { id, answer, question } = await helpOrder.update(req.body);
 
-    await Mail.sendMail({
-      to: `${helpOrder.student.nome} <${helpOrder.student.email}>`,
-      subject: 'Pedido Respondido',
-      text: `Seu pedido da questão ${question} foi respondido ${answer}`,
+    await Queue.add(HelpOrderAnswerMail.key, {
+      helpOrder,
+      question,
+      answer,
     });
 
     return res.json({

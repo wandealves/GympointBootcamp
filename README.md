@@ -31,7 +31,7 @@
 
 ## :rocket: Como Executar
 
-- Para executar
+- Executar jobs: yarn queue
 
 ## :rocket: API
 

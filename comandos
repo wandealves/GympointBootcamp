@@ -16,4 +16,6 @@ Comandos
 14) Desfaz todas migration: yarn sequelize db:migrate:undo:all
 15) Criar seed: yarn sequelize seed:generate --name [name_seed]
 16) Rodar seed: yarn sequelize db:seed:all
+17) Redis Docker: docker run --name [name] -p 6379:6379 -d -t redis:alpine 
+18) yarn add bee-queue
 

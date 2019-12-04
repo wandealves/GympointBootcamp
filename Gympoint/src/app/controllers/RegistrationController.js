@@ -2,7 +2,8 @@ import * as Yup from 'yup';
 import Registration from '../models/Registration';
 import Student from '../models/Student';
 import Plan from '../models/Plan';
-import Mail from '../../lib/Mail';
+import Queue from '../../lib/Queue';
+import RegistrationMail from '../jobs/RegistrationMail';
 
 class RegistrationController {
   async index(req, res) {
@@ -49,10 +50,8 @@ class RegistrationController {
       ],
     });
 
-    await Mail.sendMail({
-      to: `${registration.student.nome} <${registration.student.email}>`,
-      subject: 'Matrícula Realizada',
-      text: `Bem vindo ${registration.student.nome} ao Gympoint, sua matrícula foi cadastrada, ${registration.plan.title} : Plano de ${registration.plan.duration} mês(es) por R$${registration.plan.price}/mềs.`,
+    await Queue.add(RegistrationMail.key, {
+      registration,
     });
 
     return res.json({
