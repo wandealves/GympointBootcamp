@@ -15,27 +15,37 @@ class PlanController {
   async store(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
-      duration: Yup.number().required(),
-      price: Yup.number().required(),
+      duration: Yup.number()
+        .required()
+        .moreThan(0),
+      price: Yup.number()
+        .required()
+        .moreThan(0),
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ error: 'Validation fails' });
     }
 
-    const { id, title } = await Plan.create(req.body);
+    const { id, title, duration, price } = await Plan.create(req.body);
 
     return res.json({
       id,
       title,
+      duration,
+      price,
     });
   }
 
   async update(req, res) {
     const schema = Yup.object().shape({
       title: Yup.string().required(),
-      duration: Yup.number().required(),
-      price: Yup.number().required(),
+      duration: Yup.number()
+        .required()
+        .moreThan(0),
+      price: Yup.number()
+        .required()
+        .moreThan(0),
     });
 
     if (!(await schema.isValid(req.body))) {
@@ -43,11 +53,13 @@ class PlanController {
     }
 
     const plan = await Plan.findByPk(req.params.id);
-    const { id, title } = await plan.update(req.body);
+    const { id, title, duration, price } = await plan.update(req.body);
 
     return res.json({
       id,
       title,
+      duration,
+      price,
     });
   }
 

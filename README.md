@@ -31,7 +31,7 @@
 
 ## :rocket: Como Executar
 
-- Para executar 
+- Para executar
 
 ## :rocket: API
 
@@ -43,9 +43,9 @@ Body:
 
 ```json
 {
-	"name":"name_user",
-	"email":"user@email.com",
-	"password":"123456"
+  "name": "name_user",
+  "email": "user@email.com",
+  "password": "123456"
 }
 ```
 
@@ -55,11 +55,11 @@ Body:
 
 ```json
 {
-	"name":"user_name",
-	"email":"user@email.com",
-	"oldPassword":"123456",
-	"password":"222222",
-	"confirmPassword":"222222"
+  "name": "user_name",
+  "email": "user@email.com",
+  "oldPassword": "123456",
+  "password": "222222",
+  "confirmPassword": "222222"
 }
 ```
 
@@ -71,8 +71,8 @@ Body:
 
 ```json
 {
-	"email":"admin@gympoint.com",
-	"password":"123456"
+  "email": "admin@gympoint.com",
+  "password": "123456"
 }
 ```
 
@@ -82,11 +82,11 @@ Body:
 
 ```json
 {
-	"name":"user_name",
-	"email":"user@email.com",
-	"age":36,
-	"weight":80.20,
-	"height": 1.80
+  "name": "user_name",
+  "email": "user@email.com",
+  "age": 36,
+  "weight": 80.2,
+  "height": 1.8
 }
 ```
 
@@ -94,14 +94,36 @@ Body:
 
 ```json
 {
-	"name":"user_name",
-	"email":"user@email.com",
-	"age":36,
-	"weight":80.20,
-	"height": 1.80
+  "name": "user_name",
+  "email": "user@email.com",
+  "age": 36,
+  "weight": 80.2,
+  "height": 1.8
 }
 ```
 
+#### 4. Plans
 
+- GET http://[base_url]/plans
 
+- POST http://[base_url]/plans
 
+```json
+{
+  "title": "plan",
+  "duration": 1,
+  "price": 1
+}
+```
+
+- PUT http://[base_url]/plans/{id}
+
+```json
+{
+  "title": "plan",
+  "duration": 1,
+  "price": 1
+}
+```
+
+- DELETE http://[base_url]/plans/{id}
