@@ -28,10 +28,10 @@ class App {
     this.server.use(Sentry.Handlers.errorHandler());
   }
 
-  exceptionHandler(){
-    this.server.use(async (err, req, res, next)=>{
-const errors = await new Youch(err, req).toJSON();
-return res.status(500).json(errors);
+  exceptionHandler() {
+    this.server.use(async (err, req, res, next) => {
+      const errors = await new Youch(err, req).toJSON();
+      return res.status(500).json(errors);
     });
   }
 }
