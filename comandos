@@ -31,4 +31,5 @@ Comandos
 2) yarn add babel-eslint -D
 3) yarn add react-router-dom
 4) yarn add history
+5) yarn add reactotron-react-js
 
