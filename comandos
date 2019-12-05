@@ -25,3 +25,6 @@ Comandos
 23) yarn add lint staged -D
 24) yarn add husky@next
 
+//web
+1) yarn create react-app [noma_app_web]
+
