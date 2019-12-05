@@ -27,4 +27,5 @@ Comandos
 
 //web
 1) yarn create react-app [noma_app_web]
+2) yarn add babel-eslint -D
 
