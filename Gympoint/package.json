@@ -9,6 +9,17 @@
     "queue": "nodemon src/queue.js",
     "queue:debug": "nodemon --inspect src/queue.js"
   },
+  "lint-staged": {
+    "*.js": [
+      "yarn eslint --fix src --ext .js",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "dependencies": {
     "@sentry/node": "5.4.3",
     "bcryptjs": "^2.4.3",
@@ -17,6 +28,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "husky": "^4.0.0-beta.5",
     "jsonwebtoken": "^8.5.1",
     "nodemailer": "^6.3.1",
     "pg": "^7.12.1",
@@ -31,9 +43,11 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
+    "lint": "^0.7.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "sequelize-cli": "^5.5.1",
+    "staged": "^0.0.0",
     "sucrase": "^3.10.1"
   }
 }

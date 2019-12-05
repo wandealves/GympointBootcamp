@@ -22,4 +22,6 @@ Comandos
 20) yarn add express-async-errors
 21) yarn add youch
 22) yarn add dotenv
+23) yarn add lint staged -D
+24) yarn add husky@next
 
