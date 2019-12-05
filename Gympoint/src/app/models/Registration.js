@@ -1,5 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import { addMonths } from 'date-fns';
+import { addMonths, isBefore, isAfter } from 'date-fns';
 import Plan from './Plan';
 
 class Registration extends Model {
@@ -9,6 +9,18 @@ class Registration extends Model {
         start_date: Sequelize.DATE,
         end_date: Sequelize.DATE,
         price: Sequelize.DECIMAL(10, 2),
+        active: {
+          type: Sequelize.VIRTUAL(Sequelize.BOOLEAN, [
+            'start_date',
+            'end_date',
+          ]),
+          get() {
+            return (
+              isBefore(this.get('start_date'), new Date()) &&
+              isAfter(this.get('end_date'), new Date())
+            );
+          },
+        },
       },
       {
         sequelize,
