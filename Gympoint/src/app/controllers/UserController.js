@@ -9,7 +9,7 @@ class UserController {
     const users = await User.findAll({
       attributes: ['id', 'name', 'email'],
       order: ['name'],
-      where: {name:{[Op.like]: `%${q}%`}}
+      where: { name: { [Op.like]: `%${q}%` } },
     });
     return res.json(users);
   }
