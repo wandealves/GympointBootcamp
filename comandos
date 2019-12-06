@@ -32,4 +32,5 @@ Comandos
 3) yarn add react-router-dom
 4) yarn add history
 5) yarn add reactotron-react-js
+6) yarn add prop-types
 
