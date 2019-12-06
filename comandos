@@ -37,4 +37,5 @@ Comandos
 8) yarn add customize-cra react-app-rewired -D
 9) yarn add babel-plugin-root-import -D
 10) yarn add eslint-import-resolver-babel-plugin-root-import -D
+11) yarn add polished
 
