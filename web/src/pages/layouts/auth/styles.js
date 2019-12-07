@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Wrapper = styled.div`
-  height: 100%;
   background: #ee4d64;
   display: flex;
   flex-direction: column;
@@ -12,20 +11,44 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   width: 100%;
-  max-width: 315px;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 4px;
+  padding: 30px;
+  margin: 80px;
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 120px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+  }
 
   form {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
 
+    span {
+      color: #444444;
+      text-align: left;
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
     input {
-      background: rgb(0, 0, 0, 0.1);
-      border: 0;
+      background: #fff;
+      border: 1px solid #ccc;
       border-radius: 4px;
       height: 44px;
       padding: 0 15px;
-      color: #fff;
+      color: #999999;
       margin: 0 0 10px;
 
       &::placeholder {
@@ -38,7 +61,7 @@ export const Content = styled.div`
     button {
       margin: 5px 0 0;
       height: 44px;
-      background: #3b9eff;
+      background: #ee4d64;
       font-weight: bold;
       color: #ffffff;
       border: 0;
@@ -47,16 +70,16 @@ export const Content = styled.div`
       transition: background 0.2s;
 
       &:hover {
-        background: ${darken(0.03, '#3b9eff')};
+        background: ${darken(0.03, '#ee4d64')};
       }
     }
 
     a {
-      color: #fff;
+      color: #ee4d64;
       margin-top: 15px;
       font-size: 16px;
       opacity: 0.8;
-      text-align: center
+      text-align: center;
 
       &:hover {
         opacity: 1;

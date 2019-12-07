@@ -6,12 +6,14 @@ import logo from '~/assets/logo.png';
 export default function SignIn() {
   return (
     <>
-      <div className="container">
+      <div>
         <img src={logo} alt="Gympoint" />
 
         <form>
-          <input type="email" placeholder="Seu e-mail" />
-          <input type="password" placeholder="Sua senha" />
+          <span htmlFor="email">SEU E-MAIL</span>
+          <input id="email" type="email" placeholder="example@email.com" />
+          <span htmlFor="password">SUA SENHA</span>
+          <input id="password" type="password" placeholder="**************" />
 
           <button type="submit">Entrar no sistema</button>
           <Link to="/register">Criar conta</Link>
