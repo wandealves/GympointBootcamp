@@ -42,4 +42,5 @@ Comandos
 13) yarn add yup
 14) yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer
 15) yarn add axios
+16) yarn add redux-persist
 
