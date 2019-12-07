@@ -40,4 +40,5 @@ Comandos
 11) yarn add polished
 12) yarn add @rocketseat/unform
 13) yarn add yup
+14) yarn add redux redux-saga react-redux reactotron-redux reactotron-redux-saga immer
 
