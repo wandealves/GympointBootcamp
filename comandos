@@ -39,4 +39,5 @@ Comandos
 10) yarn add eslint-import-resolver-babel-plugin-root-import -D
 11) yarn add polished
 12) yarn add @rocketseat/unform
+13) yarn add yup
 

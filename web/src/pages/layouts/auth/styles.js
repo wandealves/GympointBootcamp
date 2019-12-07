@@ -34,7 +34,7 @@ export const Content = styled.div`
     flex-direction: column;
     margin-top: 30px;
 
-    span {
+    label {
       color: #444444;
       text-align: left;
       font-size: 16px;
@@ -56,6 +56,14 @@ export const Content = styled.div`
         color: #999999;
         text-align: left;
       }
+    }
+
+    span {
+      color: #fb6f91;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
+      font-size: 12px;
     }
 
     button {
