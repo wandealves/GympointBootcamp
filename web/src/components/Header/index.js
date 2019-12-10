@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 import logo from '~/assets/logo_header.png';
 import {
   Container,
-  ContentLeft,
+  Left,
   Logo,
   Navigation,
-  ContentRight,
+  Right,
 } from './styles';
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     <Container>
-      <ContentLeft>
+      <Left>
         <Logo>
           <img src={logo} height={23} width={45} alt="Gympoint Logo" />
           <h4>Gympoint</h4>
@@ -39,13 +39,13 @@ export default function Header() {
             <Link to="/help-orders">Pedidos de Auxílio</Link>
           </li>
         </Navigation>
-      </ContentLeft>
-      <ContentRight>
+      </Left>
+      <Right>
         <strong>{profile.name}</strong>
         <button type="button" onClick={handleSignOut}>
           sair do sistema
         </button>
-      </ContentRight>
+      </Right>
     </Container>
   );
 }

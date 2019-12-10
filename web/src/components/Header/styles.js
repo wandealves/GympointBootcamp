@@ -10,7 +10,7 @@ export const Container = styled.div`
   box-shadow: 0px 1px 2px #ddd;
 `;
 
-export const ContentLeft = styled.div`
+export const Left = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -54,7 +54,7 @@ export const Navigation = styled.ul`
   }
 `;
 
-export const ContentRight = styled.div`
+export const Right = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
