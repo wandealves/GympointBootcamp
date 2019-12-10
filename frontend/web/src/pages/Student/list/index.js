@@ -50,7 +50,7 @@ export default function Students() {
         <div>
           <button
             type="button"
-            onClick={() => history.push('/students/create')}
+            onClick={() => history.push('/student/create')}
           >
             <MdAdd size={20} color="#ffffff" style={{ marginRight: '5' }} />{' '}
             Cadastrar
