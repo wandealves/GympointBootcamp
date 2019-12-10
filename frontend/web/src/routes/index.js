@@ -8,7 +8,7 @@ import SignUp from '../pages/SingUp';
 
 import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder';
-import Plan from '../pages/Plan';
+import Plan from '../pages/Plan/list';
 import Registration from '../pages/Registration';
 import Student from '../pages/Student/list';
 
