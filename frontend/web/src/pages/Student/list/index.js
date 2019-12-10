@@ -48,10 +48,7 @@ export default function Students() {
       <Header>
         <h2>Gerenciando Alunos</h2>
         <div>
-          <button
-            type="button"
-            onClick={() => history.push('/student/create')}
-          >
+          <button type="button" onClick={() => history.push('/student/create')}>
             <MdAdd size={20} color="#ffffff" style={{ marginRight: '5' }} />{' '}
             Cadastrar
           </button>
