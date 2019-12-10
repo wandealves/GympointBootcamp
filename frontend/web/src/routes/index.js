@@ -10,7 +10,7 @@ import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder';
 import Plan from '../pages/Plan';
 import Registration from '../pages/Registration';
-import Student from '../pages/Student';
+import Student from '../pages/Student/list';
 
 export default function Routes() {
   return (
