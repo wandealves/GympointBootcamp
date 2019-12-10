@@ -13,6 +13,18 @@ class RegistrationController {
       order: ['start_date'],
       limit: 10,
       offset: (page - 1) * 10,
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+        {
+          model: Plan,
+          as: 'plan',
+          attributes: ['title'],
+        },
+      ],
     });
     return res.json(registrations);
   }

@@ -45,4 +45,5 @@ Comandos
 16) yarn add redux-persist
 17) yarn add react-toastify
 18) yarn add react-icons
+19) yarn add date-fns
 
