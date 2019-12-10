@@ -33,7 +33,7 @@ export const Navigation = styled.ul`
   display: flex;
 
   li {
-    margin-right: 10px;
+    margin-right: 25px;
 
     a {
       text-transform: uppercase;
