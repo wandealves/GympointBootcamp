@@ -84,6 +84,10 @@ export const Content = styled.div`
       text-align: left;
     }
 
+    input.fieldDisable {
+      background: #eee9e9;
+    }
+
     div {
       display: flex;
       justify-content: space-between;

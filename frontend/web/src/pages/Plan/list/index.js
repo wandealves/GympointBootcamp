@@ -67,7 +67,7 @@ export default function Plan() {
       <Header>
         <h2>Gerenciando Planos</h2>
         <div>
-          <button type="button" onClick={() => history.push('/plans/create')}>
+          <button type="button" onClick={() => history.push('/plan/create')}>
             <MdAdd size={20} color="#ffffff" style={{ marginRight: '5' }} />{' '}
             Cadastrar
           </button>

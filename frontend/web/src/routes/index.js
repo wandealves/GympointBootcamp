@@ -8,7 +8,8 @@ import SignUp from '../pages/SingUp';
 
 import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder/list';
-import Plan from '../pages/Plan/list';
+import PlanList from '../pages/Plan/list';
+import PlanFormCreate from '../pages/Plan/form';
 import Registration from '../pages/Registration/list';
 import StudentList from '../pages/Student/list';
 import StudentFormCreate from '../pages/Student/form';
@@ -21,7 +22,8 @@ export default function Routes() {
 
       <Route path="/dashboard" component={Dashborad} isPrivate />
       <Route path="/helpOrders" component={HelpOrder} isPrivate />
-      <Route path="/plans" component={Plan} isPrivate />
+      <Route path="/plans" component={PlanList} isPrivate />
+      <Route path="/plan/create" component={PlanFormCreate} isPrivate />
       <Route path="/registrations" component={Registration} isPrivate />
       <Route path="/students" component={StudentList} isPrivate />
       <Route path="/student/create" component={StudentFormCreate} isPrivate />
