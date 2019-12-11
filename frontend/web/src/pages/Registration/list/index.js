@@ -53,7 +53,7 @@ export default function Registration() {
         <div>
           <button
             type="button"
-            onClick={() => history.push('/registrations/create')}
+            onClick={() => history.push('/registration/create')}
           >
             <MdAdd size={20} color="#ffffff" style={{ marginRight: '5' }} />{' '}
             Cadastrar

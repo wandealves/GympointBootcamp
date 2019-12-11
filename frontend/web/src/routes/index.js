@@ -10,7 +10,8 @@ import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder/list';
 import PlanList from '../pages/Plan/list';
 import PlanFormCreate from '../pages/Plan/form';
-import Registration from '../pages/Registration/list';
+import RegistrationList from '../pages/Registration/list';
+import RegistrationFormCreate from '../pages/Registration/form';
 import StudentList from '../pages/Student/list';
 import StudentFormCreate from '../pages/Student/form';
 
@@ -24,7 +25,12 @@ export default function Routes() {
       <Route path="/helpOrders" component={HelpOrder} isPrivate />
       <Route path="/plans" component={PlanList} isPrivate />
       <Route path="/plan/create" component={PlanFormCreate} isPrivate />
-      <Route path="/registrations" component={Registration} isPrivate />
+      <Route path="/registrations" component={RegistrationList} isPrivate />
+      <Route
+        path="/registration/create"
+        component={RegistrationFormCreate}
+        isPrivate
+      />
       <Route path="/students" component={StudentList} isPrivate />
       <Route path="/student/create" component={StudentFormCreate} isPrivate />
     </Switch>
