@@ -84,6 +84,14 @@ export const Content = styled.div`
       text-align: left;
     }
 
+    span {
+      color: #ee0000;
+      align-self: flex-start;
+      margin: 0 0 10px;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
     div {
       display: flex;
       justify-content: space-between;

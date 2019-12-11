@@ -1,21 +1,26 @@
 import React, { useRef, useEffect, useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import * as Yup from 'yup';
 import { MdCheck, MdKeyboardArrowLeft } from 'react-icons/md';
 import { Form, Input } from '@rocketseat/unform';
 
-// import history from '~/services/history';
+import { addRequest, updateRequest } from '~/store/modules/student/actions';
 import api from '~/services/api';
-
-// import { addRequest, updateRequest } from '../../store/modules/student/actions';
-
 import { Container, Header, Content } from './styles';
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('O nome é obrigatório'),
+  email: Yup.string()
+    .email('Insira um e-mail válido')
+    .required('O e-mail é obrigatório'),
+});
 
 export default function Student({ match }) {
   const { id } = match.params;
   const [student, setStudent] = useState({});
+  const dispatch = useDispatch();
 
-  // const dispatch = useDispatch();
   const btnSubmit = useRef();
 
   function submitForm() {
@@ -23,10 +28,11 @@ export default function Student({ match }) {
   }
 
   // data, { resetForm }
-  function handleSubmit() {
-    // if (!id) dispatch(addRequest(data));
-    // else dispatch(updateRequest(data, id));
-    // resetForm();
+  function handleSubmit(data, { resetForm }) {
+    if (!id) dispatch(addRequest(data));
+    else dispatch(updateRequest(data, id));
+
+    resetForm();
   }
 
   function handleBack() {
@@ -64,7 +70,7 @@ export default function Student({ match }) {
         </div>
       </Header>
       <Content>
-        <Form initialData={student} onSubmit={handleSubmit}>
+        <Form schema={schema} initialData={student} onSubmit={handleSubmit}>
           <Input
             name="name"
             placeholder="John Doe"
