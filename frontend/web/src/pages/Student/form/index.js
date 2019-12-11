@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { MdCheck, MdKeyboardArrowLeft } from 'react-icons/md';
@@ -20,6 +20,7 @@ export default function Student({ match }) {
   const { id } = match.params;
   const [student, setStudent] = useState({});
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.student.loading);
 
   const btnSubmit = useRef();
 
@@ -65,7 +66,7 @@ export default function Student({ match }) {
           </button>
           <button type="button" className="btn-save" onClick={submitForm}>
             <MdCheck size={20} color="#fff" style={{ marginRight: '5' }} />{' '}
-            Salvar
+            {loading ? 'Enviando...' : 'Salvar'}
           </button>
         </div>
       </Header>
