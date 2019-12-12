@@ -43,6 +43,7 @@ module.exports = {
     "no-param-reassign": "off",
     "no-underscore-dangle": "off",
     "camelcase": "off",
+    "no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
     "jsx-a11y/label-has-associated-control": ["error", {
       "required": {

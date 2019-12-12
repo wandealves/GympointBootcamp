@@ -70,6 +70,16 @@ class StudentController {
       email,
     });
   }
+
+  async delete(req, res) {
+    const student = await Student.findByPk(req.params.id);
+    if (!student) {
+      return res.status(400).json({ error: 'Student does not exist' });
+    }
+    const { id, name, age, weight, height } = student;
+    await student.destroy();
+    return res.json({ id, name, age, weight, height });
+  }
 }
 
 export default new StudentController();

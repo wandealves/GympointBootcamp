@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { MdAdd, MdSearch } from 'react-icons/md';
 
 import api from '~/services/api';
 import history from '~/services/history';
-
 import Pagination from '~/components/Pagination';
 
 import { Container, Header, Content, EmptyContent } from './styles';
@@ -15,15 +15,6 @@ export default function Students() {
   });
 
   useEffect(() => {
-    async function loadStudents() {
-      const { page } = pagination;
-      const response = await api.get('students', {
-        params: {
-          page,
-        },
-      });
-      setStudents(response.data);
-    }
     loadStudents();
   }, []);
 
@@ -41,6 +32,26 @@ export default function Students() {
       ...pagination,
       page: page - 1,
     });
+  }
+
+  async function handleDelete(id) {
+    const result = window.confirm('Vocẽ tem certeza que deseja deletar?');
+
+    if (result) {
+      await api.delete(`/students/${id}`);
+      await loadStudents();
+      toast.success('Aluno removido');
+    }
+  }
+
+  async function loadStudents() {
+    const { page } = pagination;
+    const response = await api.get('students', {
+      params: {
+        page,
+      },
+    });
+    setStudents(response.data);
   }
 
   return (
@@ -100,6 +111,7 @@ export default function Students() {
                       type="button"
                       title="Clique para remover o estudante"
                       className="btn btn-delete"
+                      onClick={() => handleDelete(student.id)}
                     >
                       apagar
                     </button>
