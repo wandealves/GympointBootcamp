@@ -13,14 +13,13 @@ import PlanFormCreate from '../pages/Plan/form';
 import RegistrationList from '../pages/Registration/list';
 import RegistrationFormCreate from '../pages/Registration/form';
 import StudentList from '../pages/Student/list';
-import StudentFormCreate from '../pages/Student/form';
+import StudentForm from '../pages/Student/form';
 
 export default function Routes() {
   return (
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
-
       <Route path="/dashboard" component={Dashborad} isPrivate />
       <Route path="/helpOrders" component={HelpOrder} isPrivate />
       <Route path="/plans" component={PlanList} isPrivate />
@@ -32,7 +31,8 @@ export default function Routes() {
         isPrivate
       />
       <Route path="/students" component={StudentList} isPrivate />
-      <Route path="/student/create" component={StudentFormCreate} isPrivate />
+      <Route path="/student/create" component={StudentForm} isPrivate />
+      <Route path="/student/:id/edit" component={StudentForm} isPrivate />
     </Switch>
   );
 }

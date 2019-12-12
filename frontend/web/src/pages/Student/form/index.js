@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
@@ -7,6 +8,7 @@ import { Form, Input } from '@rocketseat/unform';
 
 import { addRequest, updateRequest } from '~/store/modules/student/actions';
 import api from '~/services/api';
+import history from '~/services/history';
 import { Container, Header, Content } from './styles';
 
 const schema = Yup.object().shape({
@@ -14,10 +16,22 @@ const schema = Yup.object().shape({
   email: Yup.string()
     .email('Insira um e-mail válido')
     .required('O e-mail é obrigatório'),
+  age: Yup.number()
+    .typeError('A idade é obrigatória')
+    .required('A idade é obrigatória')
+    .moreThan(0, 'A idade deve ser maior que zero'),
+  weight: Yup.number()
+    .typeError('O peso é obrigatório')
+    .required('O peso é obrigatório')
+    .moreThan(0, 'O peso deve ser maior que zero'),
+  height: Yup.number()
+    .typeError('A altura é obrigatória')
+    .required('A altura é obrigatória')
+    .moreThan(0, 'A altura deve ser maior que zero'),
 });
 
-export default function Student({ match }) {
-  const { id } = match.params;
+export default function Student() {
+  const { id } = useParams();
   const [student, setStudent] = useState({});
   const dispatch = useDispatch();
   const loading = useSelector(state => state.student.loading);
@@ -28,7 +42,6 @@ export default function Student({ match }) {
     btnSubmit.current.click();
   }
 
-  // data, { resetForm }
   function handleSubmit(data, { resetForm }) {
     if (!id) dispatch(addRequest(data));
     else dispatch(updateRequest(data, id));
@@ -37,18 +50,19 @@ export default function Student({ match }) {
   }
 
   function handleBack() {
-    // history.push('/students');
-  }
-
-  async function getStudent() {
-    const response = await api.get(`students/${id}`);
-    setStudent(response.data);
+    history.push('/students');
   }
 
   useEffect(() => {
-    if (id) {
-      getStudent();
+    async function getStudent() {
+      if (id) {
+        const response = await api.get(`students`, {
+          params: { id },
+        });
+        if (response.data) setStudent(response.data[0]);
+      }
     }
+    getStudent();
   }, [id]);
 
   return (
@@ -100,6 +114,7 @@ export default function Student({ match }) {
                 type="number"
                 label="PESO (em kg)"
                 autoComplete="off"
+                step="0.01"
               />
             </div>
             <div>
@@ -108,6 +123,7 @@ export default function Student({ match }) {
                 type="number"
                 label="ALTURA"
                 autoComplete="off"
+                step="0.01"
               />
             </div>
           </div>
@@ -124,14 +140,6 @@ Student.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string,
-    }),
-  }),
-};
-
-Student.defaultProps = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: null,
-    }),
-  }),
+    }).isRequired,
+  }).isRequired,
 };

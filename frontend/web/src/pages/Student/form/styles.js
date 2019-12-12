@@ -82,14 +82,14 @@ export const Content = styled.div`
       font-size: 16px;
       color: #999999;
       text-align: left;
-    }
 
-    span {
-      color: #ee0000;
-      align-self: flex-start;
-      margin: 0 0 10px;
-      font-weight: bold;
-      font-size: 12px;
+      & + span {
+        color: #ee0000;
+        align-self: flex-start;
+        margin: 0 0 10px;
+        font-weight: bold;
+        font-size: 12px;
+      }
     }
 
     div {

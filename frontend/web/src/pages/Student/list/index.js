@@ -91,7 +91,7 @@ export default function Students() {
                       title="Clique para editar o estudante"
                       className="btn btn-edit"
                       onClick={() =>
-                        history.push(`/students/${student.id}/edit`)
+                        history.push(`/student/${student.id}/edit`)
                       }
                     >
                       editar
