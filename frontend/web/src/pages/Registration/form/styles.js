@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { Form } from '@rocketseat/unform';
 import { darken } from 'polished';
+import MyAsyncSelect from '~/components/SearchSelectAsync';
+import MySelect from '~/components/SearchSelect';
 
 export const Container = styled.div`
-  width: 100%;
+ width: 100%;
   padding: 30px 80px 0px;
 `;
 
@@ -53,17 +56,36 @@ export const Header = styled.div`
   }
 `;
 
-export const Content = styled.div`
+export const Content =  styled.div`
   margin-top: 20px;
+  width: 100%;
+  font-size: 16px;
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  label {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: bold;
+  }
+  input.normal-input {
+    height: 36px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    margin-top: 8px;
+    padding: 20px;
+  }
+  div + span {
+    color: '#ee4d64';
+  align-self: 'flex-start';
+  margin: '0 0 10px';
+  font-weight: 'bold';
+  margin-top: '3px';
+  }
 
-  form {
-    display: flex;
-    flex-direction: column;
-
-    label {
+  label {
       text-transform: uppercase;
       font-weight: bold;
       margin-bottom: 5px;
@@ -71,41 +93,41 @@ export const Content = styled.div`
       color: #444444;
       text-align: left;
     }
+`;
 
-    input {
-      background: transparent;
-      border: 1px solid #ddd;
-      height: 44px;
-      padding: 0 15px;
-      border-radius: 4px;
-      margin-bottom: 15px;
-      font-size: 16px;
-      color: #999999;
-      text-align: left;
+export const ContentRow = styled.div`
+  margin-top: 20px;
+  display: flex;
+  & > div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-right: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+`;
 
-      &.disable {
-        background: #eee9e9;
-      }
-
-      &.width {
-        width: 198px;
+export const StudentPicker = styled(MyAsyncSelect)`
+  margin-top: 8px;
+  .react-asyncselect__control {
+    border: 1px solid #dddddd;
+    .react-asyncselect__value-container {
+      height: 40px;
+      input {
+        /* height: auto; */
       }
     }
+  }
+`;
 
-    div {
-      display: flex;
-      justify-content: space-between;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin-right: 20px;
-
-        &:last-of-type {
-          margin-right: 0;
-        }
-      }
+export const PlanPicker = styled(MySelect)`
+  margin-top: 8px;
+  .react-select__control {
+    border: 1px solid #dddddd;
+    .react-select__value-container {
+      height: 40px;
     }
   }
 `;
