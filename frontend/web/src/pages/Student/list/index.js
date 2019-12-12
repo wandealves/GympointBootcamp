@@ -9,6 +9,7 @@ import Pagination from '~/components/Pagination';
 import { Container, Header, Content, EmptyContent } from './styles';
 
 export default function Students() {
+  const [studentName, setStudentName] = useState();
   const [students, setStudents] = useState([]);
   const [pagination, setPagination] = useState({
     page: 1,
@@ -44,11 +45,24 @@ export default function Students() {
     }
   }
 
+  function handleChangeSearch(event) {
+    setStudentName(event.target.value);
+  }
+
+  function handleOnKeyDownSearch() {
+    setPagination({
+      ...pagination,
+      page: 1,
+    });
+    loadStudents();
+  }
+
   async function loadStudents() {
     const { page } = pagination;
     const response = await api.get('students', {
       params: {
         page,
+        q: studentName,
       },
     });
     setStudents(response.data);
@@ -65,9 +79,12 @@ export default function Students() {
           </button>
           <div className="input-icons">
             <input
+              name="studentName"
               className="input-field"
               type="text"
-              placeholder="Buscar estudante"
+              placeholder="Buscar aluno"
+              onKeyDown={event => event.key === 'Enter' && handleOnKeyDownSearch()}
+              onChange={handleChangeSearch}
             />
             <span className="inputWithIcon">
               <MdSearch
@@ -99,7 +116,7 @@ export default function Students() {
                   <td className="actions">
                     <button
                       type="button"
-                      title="Clique para editar o estudante"
+                      title="Clique para editar o aluno"
                       className="btn btn-edit"
                       onClick={() =>
                         history.push(`/student/${student.id}/edit`)
@@ -109,7 +126,7 @@ export default function Students() {
                     </button>
                     <button
                       type="button"
-                      title="Clique para remover o estudante"
+                      title="Clique para remover o aluno"
                       className="btn btn-delete"
                       onClick={() => handleDelete(student.id)}
                     >
