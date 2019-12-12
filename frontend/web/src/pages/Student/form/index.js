@@ -68,7 +68,7 @@ export default function Student() {
   return (
     <Container>
       <Header>
-        <h2>Cadastro do Aluno</h2>
+        <h2>{id ? 'Edição de Aluno' : 'Cadastro do Aluno'}</h2>
         <div>
           <button type="button" className="btn-back" onClick={handleBack}>
             <MdKeyboardArrowLeft

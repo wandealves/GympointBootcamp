@@ -83,7 +83,9 @@ export default function Students() {
               className="input-field"
               type="text"
               placeholder="Buscar aluno"
-              onKeyDown={event => event.key === 'Enter' && handleOnKeyDownSearch()}
+              onKeyDown={event =>
+                event.key === 'Enter' && handleOnKeyDownSearch()
+              }
               onChange={handleChangeSearch}
             />
             <span className="inputWithIcon">
