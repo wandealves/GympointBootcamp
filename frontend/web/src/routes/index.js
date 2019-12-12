@@ -9,7 +9,7 @@ import SignUp from '../pages/SingUp';
 import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder/list';
 import PlanList from '../pages/Plan/list';
-import PlanFormCreate from '../pages/Plan/form';
+import PlanForm from '../pages/Plan/form';
 import RegistrationList from '../pages/Registration/list';
 import RegistrationFormCreate from '../pages/Registration/form';
 import StudentList from '../pages/Student/list';
@@ -23,7 +23,8 @@ export default function Routes() {
       <Route path="/dashboard" component={Dashborad} isPrivate />
       <Route path="/helpOrders" component={HelpOrder} isPrivate />
       <Route path="/plans" component={PlanList} isPrivate />
-      <Route path="/plan/create" component={PlanFormCreate} isPrivate />
+      <Route path="/plan/create" component={PlanForm} isPrivate />
+      <Route path="/plan/:id/edit" component={PlanForm} isPrivate />
       <Route path="/registrations" component={RegistrationList} isPrivate />
       <Route
         path="/registration/create"

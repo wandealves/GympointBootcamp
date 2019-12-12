@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdAdd } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 import history from '~/services/history';
@@ -15,36 +16,18 @@ export default function Plan() {
   });
 
   useEffect(() => {
-    async function loadPlans() {
-      const intlMonetary = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL',
-        minimumFractionDigits: 2,
-      });
-
-      const { page } = pagination;
-      const response = await api.get('plans', {
-        params: {
-          page,
-        },
-      });
-
-      const plansResult = response.data.map(data => {
-        return {
-          id: data.id,
-          title: data.title,
-          duration:
-            data.duration > 1
-              ? `${data.duration} meses`
-              : `${data.duration} mês`,
-          price: intlMonetary.format(data.price),
-        };
-      });
-
-      setPlans(plansResult);
-    }
     loadPlans();
-  }, []);
+  }, [pagination]);
+
+  async function handleDelete(id) {
+    const result = window.confirm('Vocẽ tem certeza que deseja deletar?');
+
+    if (result) {
+      await api.delete(`/plans/${id}`);
+      await loadPlans();
+      toast.success('Plano removido');
+    }
+  }
 
   function handleNextPage() {
     const { page } = pagination;
@@ -60,6 +43,33 @@ export default function Plan() {
       ...pagination,
       page: page - 1,
     });
+  }
+
+  async function loadPlans() {
+    const intlMonetary = new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+    });
+
+    const { page } = pagination;
+    const response = await api.get('plans', {
+      params: {
+        page,
+      },
+    });
+
+    const plansResult = response.data.map(data => {
+      return {
+        id: data.id,
+        title: data.title,
+        duration:
+          data.duration > 1 ? `${data.duration} meses` : `${data.duration} mês`,
+        price: intlMonetary.format(data.price),
+      };
+    });
+
+    setPlans(plansResult);
   }
 
   return (
@@ -85,17 +95,17 @@ export default function Plan() {
               </tr>
             </thead>
             <tbody>
-              {plans.map(student => (
-                <tr key={student.id}>
-                  <td>{student.title}</td>
-                  <td>{student.duration}</td>
-                  <td align="center">{student.price}</td>
+              {plans.map(plan => (
+                <tr key={plan.id}>
+                  <td>{plan.title}</td>
+                  <td>{plan.duration}</td>
+                  <td align="center">{plan.price}</td>
                   <td className="actions">
                     <button
                       type="button"
                       title="Clique para editar o estudante"
                       className="btn btn-edit"
-                      onClick={() => history.push(`/plans/${student.id}/edit`)}
+                      onClick={() => history.push(`/plan/${plan.id}/edit`)}
                     >
                       editar
                     </button>
@@ -103,6 +113,7 @@ export default function Plan() {
                       type="button"
                       title="Clique para remover o estudante"
                       className="btn btn-delete"
+                      onClick={() => handleDelete(plan.id)}
                     >
                       apagar
                     </button>
@@ -113,7 +124,7 @@ export default function Plan() {
           </table>
         </Content>
       ) : (
-        <EmptyContent>Nenhum aluno encontrado</EmptyContent>
+        <EmptyContent>Nenhum plano encontrado</EmptyContent>
       )}
       <Pagination
         handleNextPage={handleNextPage}
