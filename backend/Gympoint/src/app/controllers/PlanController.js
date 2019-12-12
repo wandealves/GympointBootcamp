@@ -12,8 +12,8 @@ class PlanController {
 
     const plans = await Plan.findAll({
       order: [['created_at', 'DESC'], ['title']],
-      limit: 20,
-      offset: (page - 1) * 20,
+      limit: 10,
+      offset: (page - 1) * 10,
       where,
     });
     return res.json(plans);
