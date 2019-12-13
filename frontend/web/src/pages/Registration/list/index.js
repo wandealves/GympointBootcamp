@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { format, parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import { MdAdd, MdCheckCircle } from 'react-icons/md';
 
 import api from '~/services/api';
 import history from '~/services/history';
-
 import Pagination from '~/components/Pagination';
-
 import { Container, Header, Content, EmptyContent } from './styles';
 
 export default function Registration() {
@@ -17,18 +16,19 @@ export default function Registration() {
   });
 
   useEffect(() => {
-    async function loadRegistrations() {
-      const { page } = pagination;
-      const response = await api.get('registrations', {
-        params: {
-          page,
-        },
-      });
-
-      setRegistrations(response.data);
-    }
     loadRegistrations();
   }, [pagination]);
+
+  async function loadRegistrations() {
+    const { page } = pagination;
+    const response = await api.get('registrations', {
+      params: {
+        page,
+      },
+    });
+
+    setRegistrations(response.data);
+  }
 
   function handleNextPage() {
     const { page } = pagination;
@@ -44,6 +44,16 @@ export default function Registration() {
       ...pagination,
       page: page - 1,
     });
+  }
+
+  async function handleDelete(id) {
+    const result = window.confirm('Vocẽ tem certeza que deseja deletar?');
+
+    if (result) {
+      await api.delete(`/registrations/${id}`);
+      await loadRegistrations();
+      toast.success('Matrícula removido');
+    }
   }
 
   return (
@@ -106,7 +116,7 @@ export default function Registration() {
                       title="Clique para editar o estudante"
                       className="btn btn-edit"
                       onClick={() =>
-                        history.push(`/registrations/${registration.id}/edit`)
+                        history.push(`/registration/${registration.id}/edit`)
                       }
                     >
                       editar
@@ -115,8 +125,9 @@ export default function Registration() {
                   <td className="actions">
                     <button
                       type="button"
-                      title="Clique para remover o estudante"
+                      title="Clique para remover a matrícula"
                       className="btn btn-delete"
+                      onClick={() => handleDelete(registration.id)}
                     >
                       apagar
                     </button>

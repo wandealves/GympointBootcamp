@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { MdCheck, MdKeyboardArrowLeft } from 'react-icons/md';
-import { format, addMonths } from 'date-fns';
+import { format, addMonths, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
@@ -25,17 +25,17 @@ const schema = Yup.object().shape({
     .shape({
       value: Yup.number().integer(),
     })
-    .typeError('Valor inválido')
-    .required('Aluno obrigatório'),
+    .typeError('Aluno é obrigatório')
+    .required('Aluno é obrigatório'),
   plan: Yup.object()
     .shape({
       value: Yup.number().integer(),
     })
-    .typeError('Valor inválido')
-    .required('Aluno obrigatório'),
+    .typeError('Plano é obrigatório')
+    .required('Plano é obrigatório'),
   start_date: Yup.date()
-    .typeError('Valor inválido')
-    .required('Data obrigatória'),
+    .typeError('Data é obrigatória')
+    .required('Data é obrigatória'),
 });
 
 export default function Registration() {
@@ -50,14 +50,37 @@ export default function Registration() {
   const [plan, setPlan] = useState({});
   const [registration, setRegistration] = useState({});
 
+  function submitForm() {
+    btnSubmit.current.click();
+  }
+
+  async function handleSubmit(data) {
+    const request = {
+      student_id: data.student.value,
+      plan_id: data.plan.value,
+      start_date: data.start_date,
+    };
+
+    if (!id) dispatch(addRequest(request));
+    else dispatch(updateRequest(request, id));
+
+    setPlan({});
+    setStartDate(null);
+    setRegistration({});
+  }
+
+  function handleBack() {
+    history.push('/registrations');
+  }
+
   async function loadPlans() {
     const response = await api
       .get('plans', {
-        params: { page: 1, per_page: 100 },
+        params: { page: 1, limit: 100 },
       })
-      .then(r => r.data)
-      .then(d =>
-        d.map(p => ({
+      .then(x => x.data)
+      .then(y =>
+        y.map(p => ({
           label: p.title,
           value: p.id,
           duration: p.duration,
@@ -66,6 +89,24 @@ export default function Registration() {
       );
 
     setPlans(response);
+  }
+
+  async function loadStudents(inputValue) {
+    const response = await api
+      .get('students', {
+        params: {
+          q: `${inputValue}`,
+          page: 1,
+        },
+      })
+      .then(r => r.data)
+      .then(r =>
+        r.map(student => ({
+          label: student.name,
+          value: student.id,
+        }))
+      );
+    return response;
   }
 
   const end_date = useMemo(() => {
@@ -91,50 +132,49 @@ export default function Registration() {
 
   useEffect(() => {
     loadPlans();
-
-    setRegistration({
-      end_date,
-      totalPrice,
-    });
+    if (id) {
+      getRegistration();
+    } else {
+      setRegistration({
+        end_date,
+        totalPrice,
+      });
+    }
   }, [end_date, startDate, totalPrice]);
 
-  function submitForm() {
-    btnSubmit.current.click();
-  }
+  async function getRegistration() {
+    if (id) {
+      const response = await api.get(`registrations`, {
+        params: { id },
+      });
+      if (response.data) {
+        const data = response.data[0];
 
-  async function handleSubmit(data, { resetForm }) {
-    const request = {
-      student_id: data.student.value,
-      plan_id: data.plan.value,
-      start_date: data.start_date,
-    };
+        const formattedEndDate = format(parseISO(data.end_date), 'dd/MM/yyyy');
 
-    if (!id) dispatch(addRequest(request));
-    else dispatch(updateRequest(request, id));
+        setPlan(data.plan);
+        const student = {
+          label: data.student.name,
+          value: data.student.id,
+        };
 
-    resetForm();
-  }
+        const planResult = {
+          label: data.plan.title,
+          value: data.plan.id,
+          duration: data.plan.duration,
+          price: data.plan.price,
+        };
 
-  function handleBack() {
-    history.push('/registrations');
-  }
-
-  async function loadStudents(inputValue) {
-    const response = await api
-      .get('students', {
-        params: {
-          q: `${inputValue}`,
-          page: 1,
-        },
-      })
-      .then(r => r.data)
-      .then(r =>
-        r.map(student => ({
-          label: student.name,
-          value: student.id,
-        }))
-      );
-    return response;
+        setRegistration({
+          id: data.id,
+          start_date: parseISO(data.start_date),
+          end_date: formattedEndDate,
+          totalPrice: data.price,
+          student,
+          plan: planResult,
+        });
+      }
+    }
   }
 
   return (

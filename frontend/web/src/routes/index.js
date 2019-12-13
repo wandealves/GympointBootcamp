@@ -11,7 +11,7 @@ import HelpOrder from '../pages/HelpOrder/list';
 import PlanList from '../pages/Plan/list';
 import PlanForm from '../pages/Plan/form';
 import RegistrationList from '../pages/Registration/list';
-import RegistrationFormCreate from '../pages/Registration/form';
+import RegistrationForm from '../pages/Registration/form';
 import StudentList from '../pages/Student/list';
 import StudentForm from '../pages/Student/form';
 
@@ -28,7 +28,12 @@ export default function Routes() {
       <Route path="/registrations" component={RegistrationList} isPrivate />
       <Route
         path="/registration/create"
-        component={RegistrationFormCreate}
+        component={RegistrationForm}
+        isPrivate
+      />
+      <Route
+        path="/registration/:id/edit"
+        component={RegistrationForm}
         isPrivate
       />
       <Route path="/students" component={StudentList} isPrivate />
