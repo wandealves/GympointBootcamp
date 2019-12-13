@@ -28,7 +28,7 @@ export default function Registration() {
       setRegistrations(response.data);
     }
     loadRegistrations();
-  }, []);
+  }, [pagination]);
 
   function handleNextPage() {
     const { page } = pagination;

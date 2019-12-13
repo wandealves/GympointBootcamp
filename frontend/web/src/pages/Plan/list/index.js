@@ -17,7 +17,7 @@ export default function Plan() {
 
   useEffect(() => {
     loadPlans();
-  }, [pagination]);
+  }, [loadPlans, pagination]);
 
   async function handleDelete(id) {
     const result = window.confirm('Vocẽ tem certeza que deseja deletar?');

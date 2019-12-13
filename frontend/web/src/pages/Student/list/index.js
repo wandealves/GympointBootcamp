@@ -17,7 +17,7 @@ export default function Students() {
 
   useEffect(() => {
     loadStudents();
-  }, [pagination]);
+  }, [loadStudents, pagination]);
 
   function handleNextPage() {
     const { page } = pagination;

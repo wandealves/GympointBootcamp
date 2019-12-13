@@ -53,7 +53,7 @@ export default function Plan() {
     if (id) {
       getPlan();
     }
-  }, [id]);
+  }, [getPlan, id]);
 
   async function getPlan() {
     if (id) {

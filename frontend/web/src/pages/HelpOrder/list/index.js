@@ -26,7 +26,7 @@ export default function HelpOrder() {
       setHelps(response.data);
     }
     loadHelps();
-  }, []);
+  }, [pagination]);
 
   function handleNextPage() {
     const { page } = pagination;

@@ -1,18 +1,33 @@
 import styled from 'styled-components';
-import { Form } from '@rocketseat/unform';
 import { darken } from 'polished';
-import MyAsyncSelect from '~/components/SearchSelectAsync';
-import MySelect from '~/components/SearchSelect';
 
 export const Container = styled.div`
- width: 100%;
-  padding: 30px 80px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 30px;
+  @media (max-width: 768px) {
+    overflow-x: auto;
+    align-items: flex-start;
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar * {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.09) !important;
+    }
+  }
 `;
 
 export const Header = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin: 40px auto 20px;
+  width: 100%;
 
   h2 {
     font-size: 24px;
@@ -56,78 +71,200 @@ export const Header = styled.div`
   }
 `;
 
-export const Content =  styled.div`
-  margin-top: 20px;
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: space-between;
   width: 100%;
-  font-size: 16px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  label {
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: bold;
-  }
-  input.normal-input {
-    height: 36px;
-    border: 1px solid #dddddd;
-    border-radius: 4px;
-    margin-top: 8px;
-    padding: 20px;
-  }
-  div + span {
-    color: '#ee4d64';
-  align-self: 'flex-start';
-  margin: '0 0 10px';
-  font-weight: 'bold';
-  margin-top: '3px';
-  }
-
-  label {
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-size: 14px;
-      color: #444444;
-      text-align: left;
-    }
-`;
-
-export const ContentRow = styled.div`
-  margin-top: 20px;
-  display: flex;
-  & > div {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    margin-right: 15px;
-    &:last-child {
-      margin-right: 0;
+  button {
+    background: none;
+    border: 0;
+    margin: 8px;
+    &.pageDisable {
+      cursor: not-allowed;
+      visibility: hidden;
     }
   }
 `;
 
-export const StudentPicker = styled(MyAsyncSelect)`
-  margin-top: 8px;
-  .react-asyncselect__control {
-    border: 1px solid #dddddd;
-    .react-asyncselect__value-container {
-      height: 40px;
-      input {
-        /* height: auto; */
+export const Cover = styled.div`
+  table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    thead {
+      td:first-of-type {
+        text-align: left;
+        padding-left: 0px;
+      }
+      td {
+        font-size: 16px;
+        line-height: 20px;
+        color: #444;
+        font-weight: bold;
+        padding: 10px 25px;
+        text-align: center;
+      }
+      td:last-of-type {
+        text-align: end;
+        padding-right: 0;
+      }
+    }
+    tbody {
+      tr:not(:last-of-type) {
+        border-bottom: 1px solid #eee;
+      }
+      td:first-of-type {
+        text-align: left;
+        padding: 10px 150px 10px 0;
+      }
+      td {
+        max-width: 500px;
+        overflow: hidden;
+        font-size: 16px;
+        text-align: center;
+        color: #666;
+        padding: 10px 25px;
+      }
+      td:last-of-type {
+        min-width: 120px;
+        font-size: 15px;
+        padding: 10px 0;
+        text-align: right;
+      }
+      > span {
+        font-size: 16px;
+        color: #666;
+        line-height: 20px;
+      }
+      a {
+        padding-right: 23px;
+        font-size: 15px;
+        color: #4d85ee;
+      }
+      button.orderResponse {
+        padding-right: 23px;
+        font-size: 15px;
+        color: #4d85ee;
+      }
+      button {
+        background: none;
+        border: 0;
+        font-size: 15px;
+        color: #de3b3b;
       }
     }
   }
 `;
 
-export const PlanPicker = styled(MySelect)`
-  margin-top: 8px;
-  .react-select__control {
-    border: 1px solid #dddddd;
-    .react-select__value-container {
-      height: 40px;
+export const Title = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 40px auto 20px;
+  width: 100%;
+  div {
+    display: flex;
+    a.back {
+      background: #ccc;
+      padding: 10px 20px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      height: 36px;
+      transition: background 0.2s;
+      justify-content: space-around;
+      margin-right: 16px;
+      &:hover {
+        background: ${darken(0.1, '#ccc')};
+      }
+      > span {
+        font-size: 14px;
+        color: #fff;
+        margin-left: 8px;
+      }
+    }
+  }
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 4px;
+  div.divDone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const FormContent = styled.div`
+  label {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+    input {
+      border: 1px solid #ddd;
+      background: #fff;
+      font-size: 16px;
+      height: 45px;
+      border-radius: 4px;
+      width: 100%;
+      padding: 10px;
+      color: #666;
+      margin-top: 8px;
+      font-weight: normal;
+    }
+    input.readOnly {
+      background: #f5f5f5;
+    }
+    > span {
+      color: red;
+      font-weight: normal;
+    }
+  }
+  div.form {
+    display: flex;
+
+    strong {
+      margin-bottom: auto;
+      color: #444444;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    span {
+      margin: 0;
+      font-weight: normal;
+    }
+  }
+  button.btn-save {
+    border: 0;
+    background: #ee4d64;
+    padding: 0 20px;
+    border-radius: 4px;
+    display: flex;
+    height: 36px;
+    transition: background 0.2s;
+    justify-content: space-around;
+    align-items: center;
+    &:hover {
+      background: ${darken(0.1, '#ee4d64')};
+    }
+    > span {
+      font-size: 14px;
+      color: #fff;
+      margin-left: 8px;
+    }
+    svg {
+      margin: 0;
     }
   }
 `;

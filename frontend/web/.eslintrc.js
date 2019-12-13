@@ -23,7 +23,8 @@ module.exports = {
   },
   plugins: [
     'react',
-    'prettier'
+    'prettier',
+    'react-hooks'
   ],
   rules: {
     'prettier/prettier': 'error',
@@ -45,16 +46,9 @@ module.exports = {
     "camelcase": "off",
     "no-use-before-define": "off",
     "react/jsx-props-no-spreading": "off",
-    "jsx-a11y/label-has-associated-control": ["error", {
-      "required": {
-        "some": ["nesting", "id"]
-      }
-    }],
-    "jsx-a11y/label-has-for": ["error", {
-      "required": {
-        "some": ["nesting", "id"]
-      }
-    }],
+    "react-hooks/rules-of-hooks": "error",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off",
     "no-console": ["error", {
       allow: ["tron"]
     }],
