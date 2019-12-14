@@ -60,4 +60,6 @@ Comandos
 7) yarn add react-native-linear-gradient
 8) react-native link react-native-linear-gradient
 9) yarn add styled-components
+10) yarn add prop-types
+11) yarn add react-native-vector-icons
 
