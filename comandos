@@ -57,4 +57,7 @@ Comandos
 4) react-native start --reset-cache
 5) yarn add react-navigation
 6) yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23
+7) yarn add react-native-linear-gradient
+8) react-native link react-native-linear-gradient
+9) yarn add styled-components
 
