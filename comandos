@@ -49,3 +49,9 @@ Comandos
 20) yarn add react-select
 21) yarn add react-datepicker
 
+//Mobile 
+
+1) yarn add react-native-cli
+2) react-native run-android
+3) npx react-native init [name]
+
