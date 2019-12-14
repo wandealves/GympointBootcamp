@@ -47,7 +47,9 @@ export default function Registration() {
   }
 
   async function handleDelete(id) {
+    /* eslint-disable */
     const result = window.confirm('Vocẽ tem certeza que deseja deletar?');
+    /* eslint-disable */
 
     if (result) {
       await api.delete(`/registrations/${id}`);
