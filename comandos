@@ -55,4 +55,6 @@ Comandos
 2) react-native run-android
 3) npx react-native init [name]
 4) react-native start --reset-cache
+5) yarn add react-navigation
+6) yarn add react-native-reanimated react-native-gesture-handler react-native-screens@^1.0.0-alpha.23
 
