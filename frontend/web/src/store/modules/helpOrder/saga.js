@@ -5,22 +5,6 @@ import { updateRequestSuccess, failure } from './actions';
 import api from '~/services/api';
 import history from '~/services/history';
 
-/* export function* addPlan({ payload }) {
-  try {
-    const { data } = payload;
-
-    const response = yield call(api.post, 'plans', {
-      ...data,
-    });
-
-    toast.success('Plano cadastrado com sucesso!');
-    yield put(addRequestSuccess(response.data));
-  } catch (error) {
-    yield put(failure());
-    toast.error('Falha na cadastro de plano, verifique seus dados.');
-  }
-} */
-
 export function* updateHelpOrder({ payload }) {
   try {
     const { data } = payload;
