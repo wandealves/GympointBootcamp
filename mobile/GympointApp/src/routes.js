@@ -2,7 +2,8 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import SignIn from './pages/SignIn';
-import Dashboard from './pages/Dashboard';
+import HelpOrder from './pages/HelpOrder';
+import Checkin from './pages/Checkin';
 
 export default (signedIn = false) => createAppContainer(
   createSwitchNavigator({
@@ -10,7 +11,17 @@ export default (signedIn = false) => createAppContainer(
       SignIn
     }),
     App: createBottomTabNavigator({
-      Dashboard
+      Checkin,
+      HelpOrder
+    },{
+      tabBarOptions:{
+       keyboardHidesTabBar:true,
+       activeTintColor: '#ee4e62',
+       inactiveTintColor: '#999999',
+       style:{
+        backgroundColor:'#FFF',
+       },
+      },
     }),
   },{
     initialRouteName: signedIn?'App':'Sign'
