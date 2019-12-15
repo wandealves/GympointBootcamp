@@ -64,4 +64,7 @@ Comandos
 11) yarn add react-native-vector-icons
 12) yarn add reactotron-react-native reactotron-redux reactotron-redux-saga
 13) yarn add redux redux-saga react-redux
+14) yarn add redux-persist immer
+15) yarn add @react-native-community/async-storage
+16) yarn add axios
 
