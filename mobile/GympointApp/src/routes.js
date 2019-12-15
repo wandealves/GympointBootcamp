@@ -3,7 +3,7 @@ import {createBottomTabNavigator} from 'react-navigation-tabs';
 
 import SignIn from './pages/SignIn';
 import HelpOrder from './pages/HelpOrder';
-import Checkin from './pages/Checkin';
+import Checkin from './pages/Checkin/list';
 
 export default (signedIn = false) => createAppContainer(
   createSwitchNavigator({

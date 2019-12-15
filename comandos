@@ -68,4 +68,6 @@ Comandos
 15) yarn add @react-native-community/async-storage
 16) yarn add axios
 17) yarn add react-navigation-tabs
+18) yarn add react-native-simple-toast
+19) yarn add date-fns
 
