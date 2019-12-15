@@ -7,17 +7,12 @@ import { signInSuccess, signFailure } from './actions';
 
 export function* signIn({ payload }) {
   try {
-    const { email, password } = payload;
-    const response = yield call(api.post, 'sessions', {
-      email,
-      password,
+    const { id } = payload;
+    const response = yield call(api.post, 'students-auth', {
+      id,
     });
 
-    const { token, user } = response.data;
-
-    api.defaults.headers.Authorization = `Bearer ${token}`;
-
-    yield put(signInSuccess(token, user));
+    yield put(signInSuccess(response.data));
 
     //history.push('/dashboard');
   } catch (err) {
