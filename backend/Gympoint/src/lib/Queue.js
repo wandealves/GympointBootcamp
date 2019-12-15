@@ -37,7 +37,9 @@ class Queue {
   }
 
   handleFailure(job, err) {
+    /* eslint-disable */
     console.log(`Queue ${job.queue.name}: FAILED`, err);
+    /* eslint-disable */
   }
 }
 

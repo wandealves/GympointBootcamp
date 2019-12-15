@@ -9,10 +9,20 @@ import CheckinController from './app/controllers/CheckinController';
 import HelpOrderController from './app/controllers/HelpOrderController';
 import HelpOrderNoReplyController from './app/controllers/HelpOrderNoReplyController';
 import HelpOrderAnswerController from './app/controllers/HelpOrderAnswerController';
+import StudentAuthController from './app/controllers/StudentAuthController';
 
 const routes = new Router();
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
+
+routes.get('/students/:id/checkins', CheckinController.index);
+routes.post('/students/:id/checkins', CheckinController.store);
+
+routes.get('/students/:id/help-orders', HelpOrderController.index);
+routes.post('/students/:id/help-orders', HelpOrderController.store);
+
+routes.post('/students-auth/:id', StudentAuthController.store);
+
 routes.use(authMiddleware);
 routes.get('/users', UserController.index);
 routes.put('/users', UserController.update);
@@ -31,13 +41,7 @@ routes.post('/registrations', RegistrationController.store);
 routes.put('/registrations/:id', RegistrationController.update);
 routes.delete('/registrations/:id', RegistrationController.delete);
 
-routes.get('/students/:id/checkins', CheckinController.index);
-routes.post('/students/:id/checkins', CheckinController.store);
-
 routes.get('/help-orders/no-reply', HelpOrderNoReplyController.index);
 routes.post('/help-orders/:id/answer', HelpOrderAnswerController.store);
-
-routes.get('/students/:id/help-orders', HelpOrderController.index);
-routes.post('/students/:id/help-orders', HelpOrderController.store);
 
 export default routes;
