@@ -10,7 +10,7 @@ export const Container = styled(RectButton)`
   border: 1px solid #ddd;
 `;
 
-export const TitleRow = styled.View`
+export const TitleRow = styled.SafeAreaView`
   flex-direction: row;
   justify-content: space-between;
 `;

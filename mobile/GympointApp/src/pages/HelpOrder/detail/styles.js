@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   background: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -8,19 +8,19 @@ export const Container = styled.View`
   padding: 20px;
 `;
 
-export const Title = styled.View`
+export const Row = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
 
-export const TitleText = styled.Text`
+export const RowText = styled.Text`
   font-weight: bold;
   font-size: 14px;
   line-height: 16px;
   color: #444444;
 `;
 
-export const TitleTime = styled.Text`
+export const RowTime = styled.Text`
   font-size: 14px;
   line-height: 16px;
   color: #666666;

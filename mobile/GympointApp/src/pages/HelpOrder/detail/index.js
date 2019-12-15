@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Background from '~/components/Background';
 
-import {Container, Title, TitleText, TitleTime, Content, Text} from './styles';
+import {Container, Row, RowText, RowTime, Content, Text} from './styles';
 
 export default function HelpOrderDetail({navigation}) {
   const data = navigation.getParam('data');
@@ -32,17 +32,17 @@ export default function HelpOrderDetail({navigation}) {
   return (
     <Background>
       <Container>
-        <Title>
-          <TitleText>Pergunta: </TitleText>
-          <TitleTime>{dateParsed}</TitleTime>
-        </Title>
+        <Row>
+          <RowText>Pergunta: </RowText>
+          <RowTime>{dateParsed}</RowTime>
+        </Row>
         <Content>
           <Text>{data.question}</Text>
         </Content>
-        <Title>
-          <TitleText>Resposta:</TitleText>
-          <TitleTime>{dateAnswerParsed}</TitleTime>
-        </Title>
+        <Row>
+          <RowText>Resposta:</RowText>
+          <RowTime>{dateAnswerParsed}</RowTime>
+        </Row>
         <Content>
           <Text>{data.answer}</Text>
         </Content>
@@ -51,11 +51,12 @@ export default function HelpOrderDetail({navigation}) {
   );
 }
 
-HelpOrderDetail.navigationOptions = ({navigation}) => ({
-  headerLeft: () => (
+HelpOrderDetail.navigationOptions = ({navigation}) =>({
+  title: 'Gympoint',
+  headerLeft: () =>(
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('Listing');
+        navigation.navigate('HelpOrderList');
       }}>
       <Icon name="chevron-left" size={24} color="#ee4e62" />
     </TouchableOpacity>

@@ -47,11 +47,12 @@ export default function HelpOrderNew({navigation}) {
   );
 }
 
-HelpOrderNew.navigationOptions = ({navigation}) => ({
-  headerLeft: () => (
+HelpOrderNew.navigationOptions = ({navigation}) =>({
+  title: 'Gympoint',
+  headerLeft: () =>(
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('Listing');
+        navigation.navigate('HelpOrderList');
       }}>
       <Icon name="chevron-left" size={24} color="#ee4e62" />
     </TouchableOpacity>

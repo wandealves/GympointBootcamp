@@ -76,6 +76,10 @@ function HelpOrderList({navigation, isFocused}) {
   );
 }
 
+HelpOrderList.navigationOptions = {
+  title: 'Gympoint',
+};
+
 HelpOrderList.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,

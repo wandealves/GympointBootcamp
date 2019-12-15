@@ -23,20 +23,17 @@ export default (signedIn = false) => createAppContainer(
             HelpOrderList,
             HelpOrderDetail,
             HelpOrderNew,
-          },
-          {
-            defaultNavigationOptions: {
-              headerTintColor: '#FFF',
-              headerTransparent: true,
-              headerLeftContainerStyle: {
-                marginLeft: 20,
-                top: 0,
-              },
+          },{
+            defaultNavigationOptions:{
+             headerTintColor: '#ee4d64',
+             headerLeftContainerStyle:{
+               marginLeft: 20,
+             },
             },
-          },
-        ),
+          }),
         navigationOptions: {
-          // eslint-disable-next-line react/prop-types
+         // tabBarVisible:false,
+          tabBarLabel: 'Pedir ajuda',
           tabBarIcon: ({tintColor}) => (
             <Icon name="live-help" size={20} color={tintColor} />
           ),
