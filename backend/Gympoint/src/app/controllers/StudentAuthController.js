@@ -1,9 +1,21 @@
+import * as Yup from 'yup';
+
 import Student from '../models/Student';
 import Registration from '../models/Registration';
 
 class StudentAuthController {
   async store(req, res) {
-    const student = await Student.findByPk(req.params.id);
+    const schema = Yup.object().shape({
+      id: Yup.number().required(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validation fails' });
+    }
+
+    const { id } = req.body;
+
+    const student = await Student.findByPk(id);
 
     if (!student) {
       return res.status(400).json({ error: 'Student does exists.' });
