@@ -62,4 +62,6 @@ Comandos
 9) yarn add styled-components
 10) yarn add prop-types
 11) yarn add react-native-vector-icons
+12) yarn add reactotron-react-native reactotron-redux reactotron-redux-saga
+13) yarn add redux redux-saga react-redux
 
