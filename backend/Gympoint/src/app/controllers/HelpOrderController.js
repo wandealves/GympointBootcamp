@@ -6,7 +6,7 @@ class HelpOrderController {
   async index(req, res) {
     const { page = 1 } = req.query;
     const registrations = await HelpOrder.findAll({
-      order: ['question'],
+      order: [['created_at', 'DESC']],
       limit: 10,
       offset: (page - 1) * 10,
       where: {
