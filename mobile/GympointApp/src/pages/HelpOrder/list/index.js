@@ -78,6 +78,12 @@ function HelpOrderList({navigation, isFocused}) {
 
 HelpOrderList.navigationOptions = {
   title: 'Gympoint',
+  headerTitleStyle: {
+    textAlign: 'center',
+    flexGrow:1,
+    alignSelf:'center',
+    fontWeight: 'bold',
+  },
 };
 
 HelpOrderList.propTypes = {

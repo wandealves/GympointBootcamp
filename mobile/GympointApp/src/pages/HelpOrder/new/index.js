@@ -59,6 +59,16 @@ HelpOrderNew.navigationOptions = ({navigation}) =>({
   ),
 });
 
+HelpOrderNew.navigationOptions = {
+  title: 'Gympoint',
+  headerTitleStyle: {
+    textAlign: 'center',
+    flexGrow:1,
+    alignSelf:'center',
+    fontWeight: 'bold',
+  },
+};
+
 HelpOrderNew.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func,

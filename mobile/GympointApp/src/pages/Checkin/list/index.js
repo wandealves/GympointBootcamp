@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import Toast from 'react-native-simple-toast';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import api from '~/services/api';
 import Background from '~/components/Background';
@@ -78,8 +77,11 @@ export default function CheckIn() {
 }
 
 CheckIn.navigationOptions = {
-  // eslint-disable-next-line react/prop-types
-  tabBarIcon: ({tintColor}) => (
-    <Icon name="edit-location" size={20} color={tintColor} />
-  ),
+  title: 'Gympoint',
+  headerTitleStyle: {
+    textAlign: 'center',
+    flexGrow:1,
+    alignSelf:'center',
+    fontWeight: 'bold',
+  },
 };

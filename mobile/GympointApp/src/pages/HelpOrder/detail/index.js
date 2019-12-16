@@ -51,17 +51,15 @@ export default function HelpOrderDetail({navigation}) {
   );
 }
 
-HelpOrderDetail.navigationOptions = ({navigation}) =>({
+HelpOrderDetail.navigationOptions = {
   title: 'Gympoint',
-  headerLeft: () =>(
-    <TouchableOpacity
-      onPress={() => {
-        navigation.navigate('HelpOrderList');
-      }}>
-      <Icon name="chevron-left" size={24} color="#ee4e62" />
-    </TouchableOpacity>
-  ),
-});
+  headerTitleStyle: {
+    textAlign: 'center',
+    flexGrow:1,
+    alignSelf:'center',
+    fontWeight: 'bold',
+  },
+};
 
 HelpOrderDetail.propTypes = {
   navigation: PropTypes.shape({

@@ -16,7 +16,27 @@ export default (signedIn = false) => createAppContainer(
       SignIn
     }),
     App: createBottomTabNavigator({
-      Checkin,
+      Checkin:{
+        screen: createStackNavigator(
+          {
+            Checkin,
+          },{
+            defaultNavigationOptions:{
+             headerTintColor: '#ee4d64',
+             headerLeftContainerStyle:{
+               marginLeft: 20,
+             },
+            },
+          }
+        ),
+        navigationOptions: {
+          // tabBarVisible:false,
+           tabBarLabel: 'Pedir ajuda',
+           tabBarIcon: ({tintColor}) => (
+             <Icon name="edit-location" size={20} color={tintColor} />
+           ),
+         },
+      },
       HelpOrder: {
         screen: createStackNavigator(
           {
