@@ -31,7 +31,41 @@
 
 ## :rocket: Como Executar
 
-- Executar jobs: yarn queue
+- Backend
+
+a) Rodar as migration:
+
+yarn sequelize db:migrate
+
+b) Rodar Seed:
+
+yarn sequelize db:seed:all
+
+c) Executar backend:
+
+yarn dev
+
+- Frontend
+
+a) Executar aplicação web:
+
+yarn start
+
+- Mobile
+
+Foi desenvolvido para Android
+
+a) react-native start --reset-cache
+b) react-native run-android
+
+## :rocket: Mobile
+
+![login_mobile](https://user-images.githubusercontent.com/3501534/70911395-9889c800-1ff0-11ea-922f-1f74ae26e6e0.png)
+
+![orderHelp_mobile](https://user-images.githubusercontent.com/3501534/70911397-9889c800-1ff0-11ea-86f7-3c39ce482bb9.png)
+
+
+![checkin_mobile](https://user-images.githubusercontent.com/3501534/70911398-99225e80-1ff0-11ea-8ba8-f0fa6ad0028e.png)
 
 ## :rocket: API
 
