@@ -6,7 +6,6 @@ import Route from './Route';
 import SignIn from '../pages/SignIn';
 import SignUp from '../pages/SingUp';
 
-import Dashborad from '../pages/Dashboard';
 import HelpOrder from '../pages/HelpOrder/list';
 import PlanList from '../pages/Plan/list';
 import PlanForm from '../pages/Plan/form';
@@ -20,7 +19,6 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
-      <Route path="/dashboard" component={Dashborad} isPrivate />
       <Route path="/helpOrders" component={HelpOrder} isPrivate />
       <Route path="/plans" component={PlanList} isPrivate />
       <Route path="/plan/create" component={PlanForm} isPrivate />
